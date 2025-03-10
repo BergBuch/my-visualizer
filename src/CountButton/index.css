@@ -1,0 +1,43 @@
+/* コンテナ全体 */
+.count-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    padding: 30px;
+    width: 80%;
+    max-width: 600px;
+    background: #ffffff;
+    border: 2px solid #4a90e2;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+  
+/* ボタンのスタイル */
+.btn {
+	padding: 10px 20px;
+	margin: 10px;
+	border: 2px solid #4a90e2;
+	border-radius: 8px;
+	background-color: #4a90e2;
+	color: #ffffff;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+  
+.btn:hover {
+	background-color: #ffffff;
+	color: #4a90e2;
+}
+
+/* カウント表示 */
+.count-display {
+	font-size: 24px;
+	font-weight: bold;
+	color: #4a90e2;
+	margin-top: 20px;
+}
+  
