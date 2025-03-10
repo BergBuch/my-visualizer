@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './index.css';
 
 const Slider = () => {
@@ -7,8 +7,8 @@ const Slider = () => {
     const maxValue = 600;
     
     const [value, setValue] = useState(0);
-    const [isStarted, setStarted] = useState("▶");
-    let intervalId: NodeJS.Timeout | null = null;
+    const [isStartedChar, setStartedChar] = useState("▶");
+    const intervalId = useRef<NodeJS.Timeout | null>(null);
     
     const incrementValue = () => {
         setValue(prevValue => {
@@ -21,21 +21,20 @@ const Slider = () => {
     };
 
     const startSlider = () => {
-        setStarted("■");
+        setStartedChar("■");
         if (value >= maxValue) {
             setValue(0);
         }
-        const id = setInterval(() => {
+        intervalId.current = setInterval(() => {
             incrementValue();
         }, 5000/maxValue);
-        intervalId = id;
     };
     
     const stopSlider = () => {
-        setStarted("▶");
-        if (intervalId) {
-            clearInterval(intervalId);
-            intervalId = null;
+        setStartedChar("▶");
+        if (intervalId.current) {
+            clearInterval(intervalId.current);
+            intervalId.current = null;
         }
     };
 
@@ -46,7 +45,7 @@ const Slider = () => {
     }, [value]);
 
     const onClickSliderButton = () => {
-        if(isStarted === "▶") {
+        if(isStartedChar === "▶") {
             startSlider();
         }
         else {
@@ -60,7 +59,7 @@ const Slider = () => {
 
     return (
         <div className="slider-container">
-            <button className="slider-button" onClick={onClickSliderButton}>{isStarted}</button>
+            <button className="slider-button" onClick={onClickSliderButton}>{isStartedChar}</button>
             <input className="slider" type="range" min={minValue} max={maxValue} value={value} onChange={handleChange} />
             <p>Current value: {value}</p>
         </div>
