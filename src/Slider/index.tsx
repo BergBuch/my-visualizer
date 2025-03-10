@@ -8,7 +8,7 @@ const Slider = () => {
     
     const [value, setValue] = useState(0);
     const [isStarted, setStarted] = useState("▶");
-    const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
+    let intervalId: NodeJS.Timeout | null = null;
     
     const incrementValue = () => {
         setValue(prevValue => {
@@ -28,14 +28,14 @@ const Slider = () => {
         const id = setInterval(() => {
             incrementValue();
         }, 5000/maxValue);
-        setIntervalId(id);
+        intervalId = id;
     };
     
     const stopSlider = () => {
         setStarted("▶");
         if (intervalId) {
             clearInterval(intervalId);
-            setIntervalId(null);
+            intervalId = null;
         }
     };
 
