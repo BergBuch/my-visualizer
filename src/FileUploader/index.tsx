@@ -21,7 +21,7 @@ const FileUploader: FC = () => {
   // selectedFileが変わったらファイルを読み込む
     useEffect(() => {
         if (selectedFile) {
-        loadFile(selectedFile);
+            loadFile(selectedFile);
         }
     }, [selectedFile]);
 
