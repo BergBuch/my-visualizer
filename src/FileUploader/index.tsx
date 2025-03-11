@@ -48,9 +48,9 @@ const FileUploader: FC = () => {
         <div className="folder-selector-container">
         <div className="folder-selector">
             <input
-            type="file"
-            webkitdirectory=""
-            onChange={handleFolderSelection}
+                type="file"
+                webkitdirectory=""
+                onChange={handleFolderSelection}
             />
             {files.length > 0 && (
             <select value={selectedFile?.name || ''} onChange={handleFileChange}>
