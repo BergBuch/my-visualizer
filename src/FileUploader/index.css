@@ -1,0 +1,11 @@
+.folder-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
