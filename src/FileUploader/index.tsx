@@ -65,7 +65,6 @@ const FileUploader: FC = () => {
         <div className="file-display">
             {selectedFile && (
             <div>
-                <h3>選択されたファイル:</h3>
                 <textarea
                     rows={10}
                     cols={50}
