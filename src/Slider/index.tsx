@@ -5,9 +5,11 @@ import './index.css';
 const Slider = () => {
     const minValue = 0;
     const maxValue = 600;
+    const start_str = "▶"
+    const stop_str = "⏸"
     
     const [value, setValue] = useState(0);
-    const [isStartedChar, setStartedChar] = useState("▶");
+    const [isStartedChar, setStartedChar] = useState(start_str);
     const intervalId = useRef<NodeJS.Timeout | null>(null);
     
     const incrementValue = () => {
@@ -21,7 +23,7 @@ const Slider = () => {
     };
 
     const startSlider = () => {
-        setStartedChar("■");
+        setStartedChar(stop_str);
         if (value >= maxValue) {
             setValue(0);
         }
@@ -31,7 +33,7 @@ const Slider = () => {
     };
     
     const stopSlider = () => {
-        setStartedChar("▶");
+        setStartedChar(start_str);
         if (intervalId.current) {
             clearInterval(intervalId.current);
             intervalId.current = null;
@@ -45,7 +47,7 @@ const Slider = () => {
     }, [value]);
 
     const onClickSliderButton = () => {
-        if(isStartedChar === "▶") {
+        if(isStartedChar === start_str) {
             startSlider();
         }
         else {
